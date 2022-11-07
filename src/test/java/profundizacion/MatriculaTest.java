@@ -9,6 +9,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Vector;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -23,22 +25,18 @@ public class MatriculaTest {
 	@Test
 	public void importeMatriculaTest() throws Exception {
 		Matricula m = mock(Matricula.class);
-		m.vectorAsignaturas.add((Asignatura) new Object());
-		m.vectorAsignaturas.add((Asignatura) new Object());
-		m.vectorAsignaturas.add((Asignatura) new Object());
+		m.vectorAsignaturas = new Vector<>();
 		
 		when(m.getImporte()).thenReturn((double) 10);
-		when(m.getImporte()).thenReturn((double) 10);
-		when(m.getImporte()).thenReturn((double) 10);
 		
-		assertEquals((double)30, m.getImporte());
+		assertEquals((double)10, m.getImporte());
 	}
 	
 	@Test
 	public void comprobarNumEjecucionesTest() throws Exception {
 		Matricula m = mock(Matricula.class);
 		Asignatura a = mock(Asignatura.class);
+		m.vectorAsignaturas = new Vector<>();
 		verify(a, times(m.vectorAsignaturas.size())).getImporte();
-		assertTrue(true);
 	}
 }
